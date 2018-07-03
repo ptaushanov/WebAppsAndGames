@@ -1,0 +1,332 @@
+html{
+	background-color:dimgray;
+}
+canvas {
+    z-index: -1;
+    margin:auto;
+    position:absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+h1 {
+    padding-top:20px;
+	font: normal 60px;
+    font-family: Calibri;
+	font-weight: bolder;
+	color:royalblue;
+}
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#ls1,#ls2,#ls3,#ls4{
+    font: normal 20px sans-serif;
+    margin-left:5px;
+    margin-right: 5px;
+    margin-top:5px;
+    margin-bottom:5px;
+    padding:2px;
+
+}
+
+#boost{
+    opacity: 2;
+    font: normal 20px sans-serif;
+    margin-left:15px;
+    margin-right: 15px;
+    margin-top:5px;
+    margin-bottom:5px;
+    padding:2px;
+}
+#SB1{
+   font: normal 25px sans-serif;
+   text-align: center;
+   margin-top:5px;
+   margin-bottom:5px;
+   padding:5px;  
+}
+.button{
+    background-color: rgba(0,0,10,0); /* Green */
+    border: solid royalblue;
+    margin-left:25.8px;
+    color: royalblue;
+    padding: 0px 16px;
+    text-align: center;
+    text-decoration:none;
+    display: inline-block;
+    font-size: 16px;  
+}     
+#div2,#div1{
+    margin:10px;
+}
+img{
+    margin-right: 2px;
+    margin-top: 5px;
+}
+#section1{
+    position: absolute;
+    margin: auto;
+    top:90px;
+    width:240px;
+/*    background-color: rgba(240,240,240,0.6);*/
+    border-radius: 20px;
+    margin-left: 20px;
+}
+#section2{
+    background-color: rgba(240,240,240,0.6);
+    border: solid royalblue;
+    float: right;
+    margin-right: 15px;
+    margin-top: 15px
+}
+#section3{
+    position: absolute; !Unused
+    top:0px;
+    bottom:35px;
+    left:10px;
+}
+#section4{
+    display: block;
+    position: absolute;
+    margin: auto;
+    right: 0px;
+    bottom: 1px;
+    
+}
+#span2,#span3,#span4,#span5{
+    color:darkslategrey;
+    margin-left: 1.2px;
+}
+#span1{
+    color: floralwhite;
+}
+#span2{
+color:crimson;
+font-size: 30;
+}
+#span5{
+color:darkorange;
+font-size: 30;
+}
+#span4{
+color:rgb(205,0,0);
+font-size: 30;
+}
+#loadDiv{
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    bottom: 25px;
+    width:350px;
+}
+#loadProgress,#loadProgress2{
+    width:100%;
+    background-color: rgba(200,200,200,0.8);
+    padding: 3px;
+    border-radius: 20px;
+}
+#loadProgress2{
+    padding: 1.9px;
+}
+#progressBar,#progressBar2{
+    display:block;
+    height: 15.8px;
+    width: 20px;
+    background-color: royalblue;
+    border-radius: 20px;
+    transition: width 500ms linear; 
+}
+#progressBar2{
+    width:100%;
+    height: 14.8px;
+    background-color:mediumseagreen;
+}
+#progressBar3,
+#progressBar4,
+#progressBar5,
+#progressBar6,
+#progressBar7
+{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width:150px;
+    height: 16px;
+    background-color:dimgray;
+    z-index:0;
+
+}
+#progressBar8{
+    position: absolute;
+    right:16px;
+    bottom: 45px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width:16px;
+    height: 180px;
+    background-color:dimgray;
+    z-index:0;
+    border:solid dimgray 1px;
+}
+#progressIns1,
+#progressIns2,
+#progressIns3,
+#progressIns4,
+#progressIns5
+{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    left:0;
+    width:0px;
+    height: 16px;
+    background-color:darkorange;
+}
+#progressIns6{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border:solid dimgray 1px;
+    transition: height 500ms ease-in-out;
+    position: absolute;
+    right:16px;
+    bottom: 45px;
+    z-index: 0;
+    width:16px;
+    height: 180px;
+    background-color:#035096;
+}
+#text1{
+    display: block;
+    z-index: 2;
+    position: absolute;
+    width:150;
+    font-size: 11px;
+    text-align: center;
+    color: ghostwhite;
+    font-family:Segoe UI Semibold;
+}
+#levelText{
+    color: #0d1b33;
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom:0px;
+    width:340px;
+    text-align: center;
+    font-family: Calibri;
+    font-size:13.5px;
+    padding:2.5px;
+}
+#score{
+    color: floralwhite;
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    width:240px;
+    text-align: center;
+    font-family:Calibri;
+    font-size:15px;
+    padding:0.8px;
+}
+#loadDiv2{
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 49px;
+    width:240px;
+}
+
+#playerName{
+    color: dimgrey;
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 62px;
+    width:240px;
+    text-align: center;
+    font-family:Calibri;
+    font-size:40px;
+    padding:3px;
+ -webkit-text-stroke-width: 0px;
+ -webkit-text-stroke-color: white;
+}
+.cells {
+    display: flex;
+    margin-top: 7.5px;
+    // margin-left: 25vw;
+    // margin: 20px auto;
+    
+  }
+  .cell {
+    width: 20px;
+    height: 16px;
+    background: rgba(0,0,0,.7);
+    border: 0px solid black;
+  }
+   .add {
+    width: 20px;
+    background: #84DE62;
+    // font-size:2px;
+    text-align: center;
+    cursor:default;
+/*     padding-bottom: 5px;*/
+}
+#plus,
+#plus1,
+#plus2,
+#plus3,
+#plus4{
+    width: 20px;
+    font-size: 14px;
+    font-weight: bolder;
+    position: fixed;
+}
+      .add {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+#EG{
+    display: block;
+    position: absolute;
+    right:7px;
+    bottom: 0px;  
+}
+#points{
+    display:block;
+    position: absolute;
+    left:9.5em;
+    width:50;
+    bottom:5em;
+    font-family: Calibri;
+    font-size: 18;
+    color:darkslateblue;
+    
+    /* Safari */
+-webkit-transform: rotate(-10deg);
+
+/* Firefox */
+-moz-transform: rotate(-10deg);
+
+/* IE */
+-ms-transform: rotate(-10deg);
+
+/* Opera */
+-o-transform: rotate(-10deg);
+}

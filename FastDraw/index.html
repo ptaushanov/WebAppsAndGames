@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FastDraw</title>
+        <meta charset="utf-8">
+        <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> -->
+        <link rel="stylesheet" href="inputCrossCompat.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.min.js"></script>
+        
+        <script src="colorConverter.js"></script>
+        <script src="Filters-Tools.js"></script>
+        <script src="UI.js"></script>
+        <script src="main.js"></script>
+        
+    </head>
+    <body>
+        <nav>
+            <div class="primary-header-wrapper flexible">
+                <div class="secondary-wrapper flexible-extended">
+                        <img src="assets/fd.png" width="70px" height="40px">
+                        <p id="save">Save</p><!--Dialog Box-->
+                        <p>New</p><!--Prompt-->
+                        <div class="case">
+                            <p>Edit</p>
+                            <div class="drop-menu">
+                                <p id="clear">Clear</p>
+                                <p>Undo</p>
+                                <p>Redo</p>
+                                <p>Resize</p>
+                            </div> 
+                        </div>
+                        <div class="case">
+                                <p>Tools</p>
+                                <div class="drop-menu">
+                                    <p>Flip Verticly</p>
+                                    <p>Flip Horizontaly</p>
+                                </div> 
+                            </div>
+                        <div class="case">
+                                <p>Filters</p>
+                                <div class="drop-menu">
+                                    <p id="blur">Blur</p>
+                                    <p id="dotFill">DotFill</p>
+                                    <p id="colorizeBTN">Colorize</p>
+                                </div> 
+                            </div>
+                        <p>Prefrences</p>
+                </div>
+                <div class="center-wrapper">
+                    <p id="nameTag">Canvas</p>
+                </div>
+                <div class="extra-wrapper">
+                        <p style="margin-top:-3px;cursor:pointer" onclick="goFullscreen()">⮔</p>
+                    </div>
+            </div>
+        </nav>
+    <header class="flexible">
+        <section class="main-panel flexible">
+            <section class="colorizer">
+                    <input class="color" title="Primary color" id="fg-color" type="color">
+                    <input class="color" title="Secondary color" id="bg-color" type="color">
+            </section>
+            <button id="swap" title="Swap the colors">⇄</button>
+            <button  id="random-color-BTN" title="Generate a random color. Shift + click to change the secondary color">R</button>
+
+          <section class="edit-tools flexible">
+              <p>Edit</p>
+            <button id="fill" title="Fill the canvas. Shift+click to fill with the secondary color.">F</button>
+            <button id="text" title="Text">T</button>
+            <button  id="circle" title="Circle">○</button>
+            <button  id="line" title="Line">/</button>
+            <button  id="rectangle" title="Rectangle">◻</button>
+            <button  id="triangle" title="Triangle">△</button>
+            <button  id="eraser" title="Eraser">▱</button>
+          </section>
+
+          <section class="brushes flexible">
+                <p>Brushes</p>
+                <button  id="pencil" class="selected" title="Pencil">✎</button>
+                <button  id="circle-brush"  title="Circle Brush">●</button>
+                <button  id="line-brush" title="Line Brush">/</button>
+                <button  id="line-brush-reversed" title="Line Brush Reversed">\</button>
+                <button  id="rectangle-brush" title="Rectangle Brush">■</button>
+                <button  id="triangle-brush" title="Triangle Brush">▲</button>
+                <button  id="diamond-brush" title="Diamond Brush">◆</button> 
+          </section>
+
+          <section class="brushes flexible">
+                <p>Size</p>
+                <button title="Small" id="small">S</button>
+                <button title="Medium" id="medium">M</button>
+                <button title="Large" id="large">L</button>
+                 <div>
+                    <input  id="custom-checkbox" type="checkbox">
+                    <input  id="custom" type="text" placeholder="Custom">  
+                 </div>
+          </section>
+          
+          <section id="stroke" class="brushes flexible">
+            <p>Stroke</p>
+            <button title="Thick" id="thick">▃</button>
+            <button title="Normal" id="normal">▂</button>
+            <button title="Thin" class="selected" id="thin">▁</button>
+            <div id="s-config" class="flexible">
+               <p>Color:</p>
+               <button  id="s-color">Sec</button>
+            </div>
+          </section>
+
+          <section class="brushes flexible">
+                <p>Opacity</p>
+                <div class="flexible">
+                    <input title="Stroke Opacity" id="s-opacity" type="range" min="0" max="1" step="0.1" value="0">
+                    <input title="Fill Opacity" id="opacity" type="range" min="0" max="1" step="0.1" value="1">   
+                </div>
+                <div id="op-flex" class="flexible-extended">
+                    <p class="pair" title="Stroke Opacity">S</p>
+                    <p class="pair" title="Fill Opacity">F</p>
+                </div>
+                <div class="warning">
+                    <p id="sOpWarning"><span>*</span>Stroke opacity is set to 0!</p>
+                </div>
+          </section>
+        </section>
+    </header>
+        <main>
+            <section class="side-panel flexible">
+                <section class="custom-color flexible">
+                        <p>Custom Color</p>
+                        <div>
+                            <input id="cc-checkbox" type="checkbox">
+                            <input id="c-color" type="value" placeholder="HEX/HSL/RGB" disabled>
+                        </div>
+                    </section>
+
+                <section class="color-modes">
+                    <p>Color Modes</p>
+                        <div class="cMod flexible">
+                            <button  id="hue">Multicolor</button>
+                            <button  id="rainbow">Rainbow</button>
+                            <button  id="black-white">Black&White</button>
+                            <button  id="thick-thin">Thick&Thin</button>
+                            <button  id="spread">Multispread</button>
+                            <button  id="op-tr">DeltaOpacity</button>
+                        </div>
+
+                    <p id="sMode">Stroke Modes</p>
+                    <div class="cMod flexible">
+                            <button  id="sHue">Multistroke</button>
+                            <button  id="sRainbow">Rainbow</button>
+                            <button  id="sBlack-White">Black&White</button>
+                            <button  id="sThick-Thin">Thick&Thin</button>
+                            <button  id="sOpacity">DeltaOpacity</button>
+                            <button  id="pulse">Pulse</button>
+                    </div>
+                </section>
+
+                <section class="options"> <!-- Needs Rework-->
+                    <p>Canvas Options</p>
+                    <label id="scale-lable">Scale</label>
+                    <select id="scale">
+                            <option value="0">Default</option>
+                            <option value="0.5">0.5</option>
+                            <option value="1">1</option>
+                            <option value="1.5">1.5</option>
+                            <option value="2">2</option>
+                    </select> 
+                    <label>Rotate</label>
+                    <input id="rotate" type="range" min="0" max="1" step="0.01" value="1">
+
+                    <label id="co-lable">Opacity</label>
+                    <input id="canvas-opacity" type="range" min="0" max="1" step="0.01" value="1">
+
+                    <label id="edge-lable">Round Edges</label>
+                    <input id="edges" type="range" min="0" max="200" step="1" value="0">
+                </section>
+
+        </section>
+        </main>
+        <footer>
+            <div class="footer-wraper flexible">
+                <div class="first-footer-wraper flexible">
+                        <p id="p-width-height">W:<span id="width">0</span> H:<span id="height">0</span></p>
+                        <p id="cur-color">Color:<span id="curent-color">0</span></p>
+                        <p id="pxy">X:<span id="mouseX">0</span> Y:<span id="mouseY">0</span></p>
+
+            </div>
+
+            <div class="second-footer-wraper flexible"></div>
+                <p id="colWarning">&#9888; Using default brush size (10)</p>
+                <p>v1.3.0</p>
+            </div>
+            </div>
+        </footer>
+
+        <!-- POP UP MENUS -->
+        <div class="pop-wrapper" id="create-wrapper">
+            <div class="pop-body">
+                <div class="pop-content">
+                        <div class="pop-close" id="create-close">X</div>
+                        <h2>FastDraw</h2>
+                        <p id="create-text">Create a blank canvas</p>
+                    <div class="pop-content-box">
+                            <p id="write-a-name">Pick a name:</p>
+                            <input id="create-name" type="text" maxlength="16">
+                            <button id="createBTN">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

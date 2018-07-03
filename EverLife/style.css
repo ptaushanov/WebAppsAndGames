@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#mTracker{
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    color:darkslateblue;
+}

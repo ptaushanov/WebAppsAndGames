@@ -1,0 +1,25 @@
+{
+  "name": "blob.io",
+  "version": "1.0.0",
+  "description": "Combinning the powers of Agar.io and Diep.io to make a game for all the users with a modern or old browser.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.2",
+    "lerp": "^1.0.3",
+    "socket.io": "^1.7.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "sockets",
+    "p5.js",
+    "node",
+    "online",
+    "gamming"
+  ],
+  "author": "Silver1521",
+  "license": "ISC"
+}

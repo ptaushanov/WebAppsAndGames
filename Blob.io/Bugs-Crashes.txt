@@ -1,0 +1,19 @@
+Food eaten by the player sometimes adds an extra score point to the player.
+As a potentual result by:(server running on ~30 ticks but user runs faster/slower?)
+Can be resolved by:(making the server take care of the player,but as a result more errors will accar.)
+	!A temp. fix has been made using setTimeout and clearTimeout,but food next to each other will be calculated as one ,and the reason is clearTimeout as it fixes the 3*points bug.
+
+Bots are stupid, they need to be more smarter.
+Bots can't be removed, if doing so the console logs an error of not being able to read property .x and .y of 
+"undefined" (the bots that are missing).
+
+An immpruvement needs to be made with the Knockback of the player and the bots.
+The player sometimes is  Knockbacked more then it should!
+Bots always were not knockbacked as of in range of the players fuild of view!
+Sometimes players are stuck in ongoing true statement of .hit property. 
+
+A bug were the bots can't access the array that the server is providing the client as a result the client 
+can't read properties. It needs pre-loading, but that is immposible as the server and client have 
+different tick rates.(server: ~30 ,client - on-conection:~10-15 else:none).
+
+And many more to be discoved :'( .
