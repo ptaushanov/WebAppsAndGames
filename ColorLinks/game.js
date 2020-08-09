@@ -1,10 +1,23 @@
 //Seting up the aplication
-const cLinks = new PIXI.Application({ 
-    width:800, height:500, backgroundColor:0x89CFF0,
-    antialias:true, resolution:1, forceCanvas:false
+const cLinks = new PIXI.Application({
+    width: 800,
+    height: 500,
+    backgroundColor: 0x89CFF0,
+    antialias: true,
+    resolution: 1,
+    forceCanvas: false
 });
-const btOpt = { onScreenX:40, onScreenY:300, spacing:70,
-    textStyle:{ fontSize:60, fontFamily:"Gaegu", fill:0xffffff, dropShadow:true, dropShadowDistance:-1.4 }
+const btOpt = {
+    onScreenX: 40,
+    onScreenY: 300,
+    spacing: 70,
+    textStyle: {
+        fontSize: 60,
+        fontFamily: "Gaegu",
+        fill: 0xffffff,
+        dropShadow: true,
+        dropShadowDistance: -1.4
+    }
 };
 
 //Canvas centering
@@ -17,10 +30,10 @@ document.body.style.backgroundColor = "black";
 //Apending the view
 document.body.appendChild(cLinks.view);
 
-const setup = () =>{
+const setup = () => {
     //Adding the sounds
     hoverSound = sounds["assets/hover.mp3"];
-    menuClickSound  = sounds["assets/menu_click.mp3"];
+    menuClickSound = sounds["assets/menu_click.mp3"];
     cardClickSound = sounds["assets/card_click.mp3"];
     matchSound = sounds["assets/match.mp3"];
     nomatchSound = sounds["assets/nomatch.mp3"];
@@ -33,10 +46,10 @@ const setup = () =>{
 
     //Updating the menu background
     let currMenuFrame = 0;
-    setInterval(()=>{
+    setInterval(() => {
         currMenuFrame < 8 ? currMenuFrame++ : currMenuFrame = 0;
         menuSprite.texture = PIXI.loader.resources["menu" + currMenuFrame].texture;
-    },1000);
+    }, 1000);
 
     //Bluring the view
     menuSprite.filters = [new PIXI.filters.BlurFilter(1.8)];
@@ -54,7 +67,7 @@ const setup = () =>{
     cTutorial.visible = false;
 
     /* Interactive Text  */
-    const playText = new PIXI.Text("Play" ,btOpt.textStyle);
+    const playText = new PIXI.Text("Play", btOpt.textStyle);
     const levelText = new PIXI.Text("Levels", btOpt.textStyle);
     const tutText = new PIXI.Text("Tutorial", btOpt.textStyle);
     const backTexts = [];
@@ -68,7 +81,7 @@ const setup = () =>{
     tutText.position.set(btOpt.onScreenX, btOpt.onScreenY + 2 * btOpt.spacing);
     tutText.anchor.set(0, 0.5);
 
-    for(let i = 0; i < 3; i++){
+    for (let i = 0; i < 3; i++) {
         const backText = new PIXI.Text("Back", btOpt.textStyle);
         backText.position.set(42, 412);
         backTexts.push(backText);
@@ -104,7 +117,7 @@ const setup = () =>{
     cMenu.addChild(tutBTN);
 
     const backButtons = [];
-    for(let i = 0; i < 3; i++){
+    for (let i = 0; i < 3; i++) {
         backButton = new InteractiveButton(20, 420, 158, 60);
         backButton.interactive = true;
         backButton.cursor = "pointer";
@@ -135,7 +148,7 @@ const setup = () =>{
     //Adding the back buttons to all menus
     cEnd.addChild(backButtons[0]);
     cLevels.addChild(backButtons[1]);
-    cTutorial.addChild(backButtons[2]);    
+    cTutorial.addChild(backButtons[2]);
     /* Buttons End  */
 
     //Ading the Menu to the stage
@@ -210,26 +223,26 @@ const setup = () =>{
     const textGroup = new PIXI.Container();
 
     let customStyle = Object.assign({}, btOpt.textStyle);
-        customStyle.fontSize = 55;
+    customStyle.fontSize = 55;
 
-    for(let row = 0; row < Math.ceil(levelOptions.length / 6); row++){
-        for(let coll = 0; coll < 6; coll++){
-            if(row * 6 + coll >= levelOptions.length)
-            break;
+    for (let row = 0; row < Math.ceil(levelSettings.length / 6); row++) {
+        for (let coll = 0; coll < 6; coll++) {
+            if (row * 6 + coll >= levelSettings.length)
+                break;
 
             const buttText = (row * 6 + coll).toString();
             const letterOffset = buttText.length > 1 ? 15 : 0;
             const levelNumber = new PIXI.Text(buttText, customStyle);
             levelNumber.position.set(0 + coll * 100 - letterOffset, 0 + row * 100);
-    
+
             textGroup.addChild(levelNumber);
-            const levelSelectorBTN = new LevelSelectorButton( 0 + coll * 100, 0 + row * 100, 115, 60);
+            const levelSelectorBTN = new LevelSelectorButton(0 + coll * 100, 0 + row * 100, 115, 60);
             levelSelectorBTN.interactive = true;
             levelSelectorBTN.cursor = "pointer";
 
-            levelSelectorBTN.on("click", ()=>{
+            levelSelectorBTN.on("click", () => {
                 menuClickSound.play();
-                levelIndex = parseInt(buttText) -1;
+                levelIndex = parseInt(buttText) - 1;
                 cardContainer.removeChildren();
                 cLevels.visible = false;
                 cPlay.visible = true;
@@ -240,7 +253,7 @@ const setup = () =>{
     }
 
     customStyle = undefined;
-    textGroup.position.set(135,60);
+    textGroup.position.set(135, 60);
     cLevels.addChild(textGroup);
     /* Level Selector END */
 
@@ -271,12 +284,18 @@ const setup = () =>{
     cPlay.addChild(cardContainer);
 
     //Scrore, Level and End Text
-    const scoreLevelStyle = { fontFamily:"Lato", fontSize:27, fill:0xffffff, dropShadow:true, dropShadowDistance:-0.8 };
+    const scoreLevelStyle = {
+        fontFamily: "Lato",
+        fontSize: 27,
+        fill: 0xffffff,
+        dropShadow: true,
+        dropShadowDistance: -0.8
+    };
     const scoreText = new PIXI.Text("Score: 0", scoreLevelStyle);
     const curLevText = new PIXI.Text("Level 0", scoreLevelStyle);
     const endText = new PIXI.Text("End not reached yet!", btOpt.textStyle);
 
-    scoreText.position.set(30,20);
+    scoreText.position.set(30, 20);
     curLevText.position.set(cLinks.screen.width - curLevText.width - 40, 20);
     endText.style.align = "center";
 
@@ -286,18 +305,17 @@ const setup = () =>{
 
     //Game draw loop
     cLinks.ticker.add(() => {
-        if(cardContainer.children.length === 0){
-            if(levelIndex + 1 < levelOptions.length){
+        if (cardContainer.children.length === 0) {
+            if (levelIndex + 1 < levelSettings.length) {
                 levelIndex++;
                 playCards = [];
-                curLevText.text = "Level " + levelIndex; 
+                curLevText.text = "Level " + levelIndex;
                 createCardsAndBehaviour(playCards, cardContainer);
-            }
-            else{
+            } else {
                 //End of the game
                 endText.text = `Levels completed!\nYour score: ${playerScore}`;
-                endText.position.set(cLinks.screen.width/2 - endText.width/2, 130);
-                
+                endText.position.set(cLinks.screen.width / 2 - endText.width / 2, 130);
+
                 cPlay.visible = false;
                 cEnd.visible = true;
 
@@ -310,7 +328,7 @@ const setup = () =>{
         }
 
         //Showing the canges made on the cards
-        for(let card of playCards){
+        for (let card of playCards) {
             card.show();
         }
 
