@@ -205,9 +205,7 @@ function keyReleased() {
 
 
 //Slow update for the color drawing and randomizing
-const slowUpdate=()=>{
-    if(mouseX!==pmouseX || mouseY!==pmouseY){
-        
+const slowUpdate=()=>{        
         if(colorModeList[3] && indexSize<20){
             brushSize = Math.abs(Math.sin(indexSize)*30)+10;
             indexSize+=0.2;
@@ -279,8 +277,6 @@ const slowUpdate=()=>{
         else{
             indexOpacity = 0.1;
         }
-   
-    }
 }
 setInterval(slowUpdate,100);
 
