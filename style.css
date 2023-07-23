@@ -1,43 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Lato&display=swap');
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Fira Code", Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-
-}
-
-div {
+    background-color: #f3f3f3;
     display: grid;
     place-items: center;
-    border: 2px dashed black;
-    margin: 0;
-    margin-top: 10%;
-    padding: 3rem;
-}
-
-ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    justify-content: space-around;
-    width: 50%;
-    margin-left: 5%;
+    height: 100vh;
 }
 
 h1 {
-    font-size: 3.5rem
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
 }
 
-ul li {
-    flex: 1;
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+li {
+    padding: 1rem 2rem;
+    background-color: #fefefe;
+    border-radius: 6px;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 a {
     text-decoration: none;
-    font-size: 1.5rem;
-    padding: 1rem;
-}
-
-a:hover {
-    border: 2px solid black;
-    border-radius: 2rem;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
